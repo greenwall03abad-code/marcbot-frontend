@@ -23,7 +23,7 @@ if (!$session) {
     exit();
 }
 
-$stmt = $pdo->prepare('SELECT message, created_at FROM chat_logs WHERE user_id = ? ORDER BY created_at DESC LIMIT 50');
+$stmt = $pdo->prepare('SELECT message, role, created_at FROM chat_history WHERE user_id = ? ORDER BY created_at ASC LIMIT 100');
 $stmt->execute([$session['user_id']]);
 $logs = $stmt->fetchAll();
 
